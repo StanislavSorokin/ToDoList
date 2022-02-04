@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>ToDoList</title>
+
+
+</head>
+
+<body>
+
+<h2>ToDoList</h2>
+
+<ul th:each="mission : ${missions}">
+    <a th:href="@{/{id}(id=${mission.getId()})}"> <li th:text="${mission.name}"></li> </a>
+</ul>
+
+<form method="post">
+    <input type="text" name="name" placeholder="Название задачи" />
+    <input type="datetime-local" name="date" placeholder="Дата"  />
+    <input type="text" name="priority" placeholder="Приоритет" />
+    <button type="submit">Добавить</button>
+</form>
+
+<form th:method="DELETE" >
+    <button type="submit">Удалить все</button>
+</form>
+
+
+
+</body>
+
+</html>

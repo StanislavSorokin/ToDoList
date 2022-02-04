@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My First HTML Thymeleaf Template</title>
+</head>
+
+<body>
+
+<h2>Mission</h2>
+
+<ul th:object="${mission}">
+    <li>Название задачи: <span th:text="*{name}"></span></li>
+    <li>Дата выполнения: <span th:text="*{date}"></span></li>
+    <li>Приоритет: <span th:text="*{priority}"></span></li>
+</ul>
+
+<form th:method="PUT" th:action="@{/{id}(id=*{id})}">
+    <input type="text" name="name" placeholder="Название задачи" />
+    <input type="datetime-local" name="date" placeholder="Дата" value="0001-01-01T00:00"/>
+    <input type="text" name="priority" placeholder="Приоритет" />
+    <button type="submit">Изменить</button>
+</form>
+
+<form th:method="DELETE" th:action="@{/{id}(id=*{id})}" >
+    <button type="submit">Удалить</button>
+</form>
+
+</body>
+</html>
